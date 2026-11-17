@@ -6,6 +6,9 @@ This is an independent study by Nikhil Sehgal. It uses public data only. It is n
 Daimler Truck, the University of St.Gallen, BMW Group, Ulm University or Catena-X. It is a set of
 illustrative backtests of single cases, not a forecast and not a monitoring tool.
 
+Results page: https://days-of-warning.vercel.app
+Code and data: https://github.com/nikhilsehgal3333/days-of-warning
+
 Status: proof of concept, version 0.2. Two cases:
 
 - **The 2025 Nexperia chip disruption** (`case/nexperia/`): one hidden firm and its owner.
