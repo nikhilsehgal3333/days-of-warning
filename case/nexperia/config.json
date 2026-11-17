@@ -1,0 +1,68 @@
+{
+  "id": "nexperia",
+  "title": "The 2025 Nexperia chip disruption",
+  "short": "Nexperia chips, 2025",
+  "question": "How many days of warning was a hidden-tier map worth in the 2025 Nexperia disruption?",
+  "node_kind": "one firm and its owner",
+  "observer": "VM",
+  "lookback_days": 730,
+  "sensitivity_lookback_days": [
+    365,
+    730,
+    1095
+  ],
+  "map_reference": {
+    "date": "2024-12-02",
+    "label": "the US listing of 2 Dec 2024"
+  },
+  "figure": {
+    "full": [
+      "2024-11-01",
+      "2025-11-30"
+    ],
+    "zoom": [
+      "2025-09-25",
+      "2025-11-05"
+    ],
+    "channels": [
+      "regulatory",
+      "legal",
+      "trade",
+      "association",
+      "operational",
+      "attention"
+    ]
+  },
+  "signals": {
+    "federal_register": [
+      {
+        "source_id": "fr_api_wingtech",
+        "term": "Wingtech"
+      },
+      {
+        "source_id": "fr_api_affiliates",
+        "term": "affiliates"
+      }
+    ],
+    "federal_register_window": [
+      "2024-01-01",
+      "2025-12-31"
+    ],
+    "csl": {
+      "source_id": "csl_api",
+      "terms": [
+        "wingtech",
+        "nexperia"
+      ]
+    },
+    "pageviews": [
+      {
+        "source_id": "wiki_pageviews",
+        "article": "Nexperia",
+        "subject": "NEX",
+        "start": "20240101",
+        "end": "20251231"
+      }
+    ]
+  }
+}

@@ -1,66 +1,70 @@
-"""Signals from public APIs: Federal Register, the US Consolidated Screening List and Wikipedia
-page views. Raw responses go to local/text/ so that the quote check can find the numbers.
+"""Signals from public APIs, as set in case/<id>/config.json under "signals":
 
-    py -3.12 -m htw.signals            use local copies if present
-    py -3.12 -m htw.signals --refresh  download again
+- "federal_register": list of {"source_id", "term"}, with "federal_register_window" [from, to]
+- "csl": {"source_id", "terms"}  (US Consolidated Screening List)
+- "pageviews": list of {"source_id", "article", "subject", "start", "end"}  (Wikipedia page views,
+  the official Wikimedia statistics; an attention measure, not article text)
+
+Raw responses go to local/<case>/text/ so that the quote check can find numbers in them.
+
+    py -3.12 -m htw.signals [--case <id>] [--refresh]
 """
 from __future__ import annotations
 
 import csv
 import json
 import statistics
-import sys
-from datetime import date, timedelta
-from pathlib import Path
-from urllib.parse import urlencode
+from datetime import date
+from urllib.parse import quote, urlencode
 
-from . import net
+from . import net, paths
 
-ROOT = Path(__file__).resolve().parent.parent
-TEXT = ROOT / "local" / "text"
-RESULTS = ROOT / "results"
 FR_API = "https://www.federalregister.gov/api/v1/documents.json"
 CSL_API = "https://data.trade.gov/downloadable_consolidated_screening_list/v1/consolidated.json"
 WIKI_API = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/"
-            "all-access/user/Nexperia/daily/20240101/20251231")
+            "all-access/user/{article}/daily/{start}/{end}")
 SPIKE_KS = (3, 5, 10)
 SPIKE_MIN_VIEWS = 500
 BASELINE_DAYS = 28
 
 
-def cached(source_id: str, url: str, refresh: bool) -> bytes:
-    path = TEXT / f"{source_id}.txt"
+def cached(case: str, source_id: str, url: str, refresh: bool) -> bytes:
+    path = paths.text_dir(case) / f"{source_id}.txt"
     if path.exists() and not refresh:
         return path.read_bytes()
     body, _ = net.get(url, timeout=180)
-    TEXT.mkdir(parents=True, exist_ok=True)
     path.write_bytes(body)
     return body
 
 
-def federal_register(refresh: bool) -> list[dict]:
+def federal_register(case: str, cfg: dict, refresh: bool) -> list[dict]:
+    lo, hi = cfg.get("federal_register_window", ["2024-01-01", "2025-12-31"])
     rows = []
-    for sid, term in [("fr_api_wingtech", "Wingtech"), ("fr_api_affiliates", "affiliates")]:
+    for q in cfg.get("federal_register", []):
         query = urlencode({
-            "conditions[term]": term,
+            "conditions[term]": q["term"],
             "conditions[agencies][]": "industry-and-security-bureau",
-            "conditions[publication_date][gte]": "2024-01-01",
-            "conditions[publication_date][lte]": "2025-12-31",
+            "conditions[publication_date][gte]": lo,
+            "conditions[publication_date][lte]": hi,
             "per_page": 100, "order": "oldest",
             "fields[]": ["document_number", "publication_date", "effective_on", "title", "html_url"],
         }, doseq=True)
-        for d in json.loads(cached(sid, f"{FR_API}?{query}", refresh)).get("results", []):
+        for d in json.loads(cached(case, q["source_id"], f"{FR_API}?{query}", refresh)).get("results", []):
             if d["document_number"] not in {r["document_number"] for r in rows}:
                 rows.append({k: d.get(k) or "" for k in
                              ["document_number", "publication_date", "effective_on", "title", "html_url"]})
     return sorted(rows, key=lambda r: r["publication_date"])
 
 
-def screening_list(refresh: bool) -> list[dict]:
-    data = json.loads(cached("csl_api", CSL_API, refresh))
+def screening_list(case: str, cfg: dict, refresh: bool) -> list[dict]:
+    spec = cfg.get("csl")
+    if not spec:
+        return []
+    data = json.loads(cached(case, spec["source_id"], CSL_API, refresh))
     out = []
     for r in data["results"]:
-        if "wingtech" in json.dumps(r).lower() or "nexperia" in json.dumps(r).lower():
+        blob = json.dumps(r).lower()
+        if any(term in blob for term in spec["terms"]):
             out.append({"name": r.get("name", ""), "source": r.get("source", ""),
                         "start_date": r.get("start_date") or "",
                         "federal_register_notice": r.get("federal_register_notice") or "",
@@ -83,33 +87,42 @@ def spikes(series: list[tuple[date, int]]) -> list[dict]:
     return rows
 
 
-def page_views(refresh: bool) -> list[dict]:
-    items = json.loads(cached("wiki_pageviews", WIKI_API, refresh))["items"]
+def page_views(case: str, spec: dict, refresh: bool) -> list[dict]:
+    url = WIKI_API.format(article=quote(spec["article"].replace(" ", "_")), start=spec["start"], end=spec["end"])
+    items = json.loads(cached(case, spec["source_id"], url, refresh))["items"]
     series = [(date(int(i["timestamp"][:4]), int(i["timestamp"][4:6]), int(i["timestamp"][6:8])),
                i["views"]) for i in items]
     return spikes(series)
 
 
-def write(name: str, rows: list[dict]) -> None:
-    RESULTS.mkdir(exist_ok=True)
-    with open(RESULTS / name, "w", newline="", encoding="utf-8") as handle:
+def write(case: str, name: str, rows: list[dict]) -> None:
+    if not rows:
+        return
+    with open(paths.results_dir(case) / name, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
 
 
-def run(refresh: bool = False) -> dict:
-    fr, csl, att = federal_register(refresh), screening_list(refresh), page_views(refresh)
-    write("fr_documents.csv", fr)
-    write("csl_entries.csv", csl)
-    write("attention.csv", att)
-    first = {k: next((r for r in att if r[f"spike_k{k}"]), None) for k in SPIKE_KS}
+def run(case: str, refresh: bool = False) -> dict:
+    cfg = paths.config(case).get("signals", {})
+    fr = federal_register(case, cfg, refresh)
+    csl = screening_list(case, cfg, refresh)
+    write(case, "fr_documents.csv", fr)
+    write(case, "csl_entries.csv", csl)
+    first = {}
+    for spec in cfg.get("pageviews", []):
+        att = page_views(case, spec, refresh)
+        write(case, f"attention_{spec['source_id']}.csv", att)
+        first[spec["article"]] = {k: next((r for r in att if r[f"spike_k{k}"]), None) for k in SPIKE_KS}
     return {"fr": fr, "csl": csl, "first_spike": first}
 
 
 if __name__ == "__main__":
-    out = run("--refresh" in sys.argv)
-    print("Federal Register:", [(r["document_number"], r["publication_date"]) for r in out["fr"]])
-    print("Screening list:", [(r["name"], r["start_date"], r["federal_register_notice"]) for r in out["csl"]])
-    for k, r in out["first_spike"].items():
-        print(f"first spike k={k}:", r and (r["date"], r["views"], r["baseline"]))
+    chosen, refresh = paths.selected()
+    for case in chosen:
+        out = run(case, refresh)
+        print(f"[{case}] Federal Register:", [(r["document_number"], r["publication_date"]) for r in out["fr"]])
+        print(f"[{case}] Screening list:", [(r["name"], r["start_date"]) for r in out["csl"]])
+        for article, f in out["first_spike"].items():
+            print(f"[{case}] first spike k=5 for {article}:", f[5] and (f[5]["date"], f[5]["views"]))

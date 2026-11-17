@@ -31,25 +31,15 @@ A, in days.
 ## Result
 
 <!-- RESULTS:START -->
+**The 2025 Nexperia chip disruption**
+
 - Map value: **330 days**.
 - Observer B (full map) could act on event E01, public on 2024-12-02, 330 days before the first production stop on 2025-10-28.
 - Observer A (public map, named links) had no connected signal early enough to act. Its first connected signal of any kind was E07, 12 days before the stop.
 - Needed lead time in the grid: 48 to 166 days.
-- Generic variant ("used in the automotive industry" counts as a link): map value 0 days. Public data connected the early signal to the industry, but not to any named supplier or part.
+- Variant with generic links: map value 0 days.
 
-| Event | Channel | Public date | Lead time (days) | Actionable share | A | B |
-|---|---|---|---|---|---|---|
-| E01 listed (WT) | regulatory | 2024-12-02 | 330 | 1.0 | no | yes |
-| E03 rule (NEX) | regulatory | 2025-09-30 | 28 | 0.0 | no | yes |
-| E04 order (NEX) | legal | 2025-10-12 | 16 | 0.0 | no | yes |
-| A01 attention (NEX) | attention | 2025-10-12 | 16 | 0.0 | no | yes |
-| E06 ruling (NEX) | legal | 2025-10-13 | 15 | 0.0 | no | yes |
-| E07 warning (VM) | association | 2025-10-16 | 12 | 0.0 | yes | yes |
-| E05 ban (NEXCN) | trade | 2025-10-17 | 11 | 0.0 | yes | yes |
-| E15 warning (NEX) | operational | 2025-10-17 | 11 | 0.0 | yes | yes |
-| E09 warning (T1) | operational | 2025-10-24 | 4 | 0.0 | yes | yes |
-
-Full tables: [`results/RESULTS.md`](results/RESULTS.md). Figures: `site/`.
+Full tables: `results/<case>/RESULTS.md`. Figures: `site/<case>/`.
 <!-- RESULTS:END -->
 
 ## Method, in short

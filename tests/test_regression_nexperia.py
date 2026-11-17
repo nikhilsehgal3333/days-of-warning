@@ -12,7 +12,8 @@ FIXTURES = ROOT / "tests" / "fixtures" / "nexperia_v0.1"
 
 
 def rows(path: Path) -> list[dict]:
-    return list(csv.DictReader(open(path, encoding="utf-8", newline="")))
+    with open(path, encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def current(name: str) -> Path:

@@ -1,21 +1,19 @@
-"""Check every evidence row.
+"""Check every evidence row of a case.
 
 A row passes only if
 - its source is tier 1 (primary or official) or tier 2 (established secondary), never tier 3
   (Wikipedia, blogs, aggregators), and
 - its quote, 30 words or fewer, occurs word for word in the downloaded text.
 
-    py -3.12 -m htw.checks
+    py -3.12 -m htw.checks [--case <id>]
 """
 from __future__ import annotations
 
 import csv
-from pathlib import Path
 
+from . import paths
 from .textnorm import quote_in_text
 
-ROOT = Path(__file__).resolve().parent.parent
-TEXT = ROOT / "local" / "text"
 MAX_WORDS = 30
 ALLOWED_TIERS = {"1", "2"}
 
@@ -31,22 +29,20 @@ def evaluate(quote: str, text: str, tier: str) -> tuple[bool, str]:
     return True, ""
 
 
-def run() -> list[dict]:
-    root = ROOT
+def run(case: str) -> list[dict]:
+    cdir, tdir = paths.case_dir(case), paths.text_dir(case)
     tiers = {r["source_id"]: r.get("tier", "")
-             for r in csv.DictReader(open(root / "case" / "sources.csv", encoding="utf-8"))}
-    rows = list(csv.DictReader(open(root / "case" / "evidence.csv", encoding="utf-8")))
+             for r in csv.DictReader(open(cdir / "sources.csv", encoding="utf-8"))}
     out = []
-    for row in rows:
-        path = TEXT / f"{row['source_id']}.txt"
+    for row in csv.DictReader(open(cdir / "evidence.csv", encoding="utf-8")):
+        path = tdir / f"{row['source_id']}.txt"
         text = path.read_text(encoding="utf-8") if path.exists() else ""
         tier = tiers.get(row["source_id"], "")
         found, reason = evaluate(row["quote"], text, tier)
         out.append({"evidence_id": row["evidence_id"], "quote_found": found, "reason": reason,
                     "source_id": row["source_id"], "tier": tier, "chars_in_text": len(text),
                     "quote_words": len(row["quote"].split())})
-    (root / "results").mkdir(exist_ok=True)
-    with open(root / "results" / "evidence_check.csv", "w", newline="", encoding="utf-8") as handle:
+    with open(paths.results_dir(case) / "evidence_check.csv", "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(out[0]))
         writer.writeheader()
         writer.writerows(out)
@@ -54,11 +50,13 @@ def run() -> list[dict]:
 
 
 def main() -> None:
-    out = run()
-    failed = [r for r in out if not r["quote_found"]]
-    print(f"{len(out) - len(failed)} of {len(out)} rows pass the check")
-    for r in failed:
-        print(f"  FAIL {r['evidence_id']} ({r['source_id']}, tier {r['tier'] or '?'}): {r['reason']}")
+    chosen, _ = paths.selected()
+    for case in chosen:
+        out = run(case)
+        failed = [r for r in out if not r["quote_found"]]
+        print(f"[{case}] {len(out) - len(failed)} of {len(out)} rows pass the check")
+        for r in failed:
+            print(f"  FAIL {r['evidence_id']} ({r['source_id']}, tier {r['tier'] or '?'}): {r['reason']}")
 
 
 if __name__ == "__main__":
