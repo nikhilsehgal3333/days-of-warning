@@ -1,0 +1,14 @@
+event_id,subject,relation,channel,event_date,public_date,source_id
+E01,WT,listed,regulatory,2024-12-02,2024-12-02,nexperia_2024-12-02
+E03,NEX,rule,regulatory,2025-09-29,2025-09-30,fr_2025-19001
+E04,NEX,order,legal,2025-09-30,2025-10-12,nltimes_2025-10-13
+A01,NEX,attention,attention,2025-10-12,2025-10-12,wiki_pageviews
+E06,NEX,ruling,legal,2025-10-07,2025-10-13,nltimes_2025-10-13
+E07,VM,warning,association,2025-10-16,2025-10-16,acea_2025-10-16
+E05,NEXCN,ban,trade,2025-10-04,2025-10-17,ams_2025-10-17
+E15,NEX,warning,operational,2025-10-10,2025-10-17,ams_2025-10-17
+E09,T1,warning,operational,2025-10-24,2025-10-24,claims_2025-10-24
+E11,VM,production_stop,operational,2025-10-28,2025-10-28,mbn_honda
+E10,NEX,supply_stop,operational,2025-10-29,2025-10-29,nexperia_update_2
+E13,NEX,suspension,regulatory,2025-11-10,2025-11-12,fr_2025-19846
+E14,NEX,suspension,legal,2025-11-19,2025-11-19,yahoo_2025-11-19

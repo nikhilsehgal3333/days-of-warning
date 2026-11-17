@@ -1,0 +1,6 @@
+node_id,name,kind,tier,country,note
+VM,Vehicle makers (group),group,0,multiple,
+T1,Tier-1 module suppliers (group),group,1,multiple,
+NEX,Nexperia B.V.,firm,2,NL,
+NEXCN,"Nexperia China, Dongguan assembly and test",site,3,CN,
+WT,"Wingtech Technology Co., Ltd.",firm,3,CN,

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" role="img" font-family="Arial, sans-serif" font-size="13">
+<title>When each link of the map became public</title>
+<rect width="1000" height="330" fill="#ffffff"/>
+<line x1="800" y1="250" x2="690" y2="160" stroke="#0b5cad" stroke-width="2.5"/>
+<text x="707" y="183" fill="#0b5cad" text-anchor="middle" font-size="12">named</text>
+<text x="707" y="197" fill="#0b5cad" text-anchor="middle" font-size="12">2024-10-23</text>
+<line x1="800" y1="70" x2="690" y2="160" stroke="#b42318" stroke-width="2.5"/>
+<text x="707" y="93" fill="#b42318" text-anchor="middle" font-size="12">named</text>
+<text x="707" y="107" fill="#b42318" text-anchor="middle" font-size="12">2025-10-17</text>
+<line x1="530" y1="160" x2="430" y2="160" stroke="#b42318" stroke-width="2.5"/>
+<text x="480" y="138" fill="#b42318" text-anchor="middle" font-size="12">named</text>
+<text x="480" y="152" fill="#b42318" text-anchor="middle" font-size="12">2025-10-17</text>
+<text x="480" y="180" fill="#57606a" text-anchor="middle" font-size="12">generic</text>
+<text x="480" y="194" fill="#57606a" text-anchor="middle" font-size="12">2024-10-23</text>
+<line x1="270" y1="160" x2="170" y2="160" stroke="#0b5cad" stroke-width="2.5"/>
+<text x="220" y="138" fill="#0b5cad" text-anchor="middle" font-size="12">named</text>
+<text x="220" y="152" fill="#0b5cad" text-anchor="middle" font-size="12">2024-11-23</text>
+<rect x="10" y="137" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="90" y="165" fill="#1f2328" text-anchor="middle">Vehicle makers</text>
+<rect x="270" y="137" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="350" y="165" fill="#1f2328" text-anchor="middle">Tier-1 module suppliers</text>
+<rect x="530" y="137" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="610" y="165" fill="#1f2328" text-anchor="middle">Nexperia (NL)</text>
+<rect x="800" y="47" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="880" y="75" fill="#1f2328" text-anchor="middle">Nexperia China (assembly)</text>
+<rect x="800" y="227" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="880" y="255" fill="#1f2328" text-anchor="middle">Wingtech (owner, CN)</text>
+<text x="30" y="310" fill="#57606a" font-size="12">Each line joins a supplier or owner (right) to its customer (left). Blue: public before the US listing of 2 Dec 2024. Red: public only from Oct 2025.</text>
+</svg>
