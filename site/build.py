@@ -21,23 +21,59 @@ REPO = "https://github.com/nikhilsehgal3333/days-of-warning"
 NOTE = ("Independent study by Nikhil Sehgal, using public data only. Not a product of Daimler Truck, the "
         "University of St.Gallen, BMW Group, Ulm University or Catena-X. Proof of concept. Illustrative "
         "backtests of single cases, not forecasts.")
-CSS = """:root { --ink:#1f2328; --muted:#57606a; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa; --accent:#0b5cad; }
+CSS = """:root { --ink:#16181d; --muted:#5b6170; --line:#e3e6eb; --bg:#fbfbfa; --card:#ffffff; --soft:#f2f4f7;
+  --accent:#0b5cad; --accent-soft:#e8f0fb; --red:#b42318; --red-soft:#fdecea; --green:#1a7f37; }
+@media (prefers-color-scheme: dark) { :root { --ink:#e8eaee; --muted:#a2a9b6; --line:#2b313b; --bg:#0f1216;
+  --card:#161a20; --soft:#1c2129; --accent:#6ea8ff; --accent-soft:#16253b; --red:#ff8a80; --red-soft:#3a1d1b; --green:#56d364; }
+  figure svg { filter: invert(0.92) hue-rotate(180deg); } }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 Arial, Helvetica, sans-serif; }
-main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
-h1 { font-size:1.9rem; line-height:1.2; margin:0.2em 0 0.3em; }
-h2 { font-size:1.3rem; margin:2em 0 0.5em; border-bottom:1px solid var(--line); padding-bottom:4px; }
-.lede { font-size:1.15rem; }
-.note { background:var(--soft); border-left:4px solid var(--accent); padding:10px 14px; color:var(--muted); }
-.headline { background:var(--soft); border:1px solid var(--line); border-radius:8px; padding:8px 20px; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
-.card { border:1px solid var(--line); border-radius:8px; padding:12px 16px; }
-figure { margin:1.2em 0; } figure svg { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
-figcaption { color:var(--muted); font-size:0.9rem; }
-.scroll { overflow-x:auto; } table { border-collapse:collapse; width:100%; font-size:0.92rem; }
-th, td { border-bottom:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top; }
-th { background:var(--soft); } a { color:var(--accent); }
-code { background:var(--soft); padding:1px 4px; border-radius:4px; }"""
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font:17px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.topbar { position:sticky; top:0; z-index:5; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.topbar nav { max-width:1040px; margin:0 auto; padding:10px 20px; display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+.topbar .brand { font-weight:700; color:var(--ink); text-decoration:none; margin-right:auto; letter-spacing:-0.01em; }
+.topbar a { color:var(--muted); text-decoration:none; font-size:0.92rem; }
+.topbar a:hover { color:var(--accent); }
+main { max-width:1040px; margin:0 auto; padding:28px 20px 80px; }
+.hero { padding:36px 0 18px; }
+.eyebrow { text-transform:uppercase; letter-spacing:0.08em; font-size:0.78rem; font-weight:600; color:var(--accent); margin:0 0 10px; }
+h1 { font-size:clamp(2rem, 5vw, 3.1rem); line-height:1.08; letter-spacing:-0.025em; margin:0 0 14px; }
+h2 { font-size:1.45rem; letter-spacing:-0.015em; margin:2.6em 0 0.7em; }
+h3 { font-size:1.1rem; margin:0 0 6px; }
+.lede { font-size:1.22rem; color:var(--muted); max-width:46em; margin:0; }
+.note { font-size:0.85rem; color:var(--muted); background:var(--soft); border-radius:10px; padding:10px 14px; margin:22px 0 0; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin:26px 0 8px; }
+.stat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+.stat .v { font-size:2.2rem; font-weight:700; letter-spacing:-0.03em; line-height:1.1; }
+.stat .v small { font-size:1rem; font-weight:500; color:var(--muted); margin-left:4px; }
+.stat .l { color:var(--muted); font-size:0.9rem; margin-top:4px; }
+.stat.accent { background:var(--accent-soft); border-color:transparent; }
+.stat.accent .v { color:var(--accent); }
+.headline { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+  border-radius:12px; padding:6px 22px; }
+.headline li { margin:8px 0; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; display:flex;
+  flex-direction:column; gap:8px; transition:transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,0.07); }
+.card .big { font-size:2.6rem; font-weight:700; color:var(--accent); letter-spacing:-0.03em; line-height:1; }
+.card .tag { display:inline-block; font-size:0.78rem; color:var(--muted); background:var(--soft); padding:3px 9px; border-radius:99px; }
+.card a.more { margin-top:auto; font-weight:600; text-decoration:none; }
+figure { margin:1.4em 0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px; }
+figure svg { width:100%; height:auto; display:block; }
+figcaption { color:var(--muted); font-size:0.88rem; padding:8px 4px 2px; }
+.scroll { overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+table { border-collapse:collapse; width:100%; font-size:0.92rem; }
+th, td { border-bottom:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+th { background:var(--soft); font-weight:600; font-size:0.85rem; color:var(--muted); }
+tbody tr:hover { background:var(--soft); }
+a { color:var(--accent); }
+ul, ol { padding-left:1.25em; }
+code { background:var(--soft); padding:1px 6px; border-radius:6px; font-size:0.9em; }
+footer { border-top:1px solid var(--line); margin-top:60px; padding-top:20px; color:var(--muted); font-size:0.88rem; }"""
 
 
 def esc(t) -> str:
@@ -136,10 +172,20 @@ def page(res: dict, method_md: str) -> str:
 <title>Days of warning: {esc(cfg['short'])}</title>
 <meta name="description" content="{esc(cfg['question'])}">
 <style>{CSS}</style></head>
-<body><main>
-<p class="note">{esc(NOTE)} <a href="../index.html">All cases</a>.</p>
+<body><header class="topbar"><nav><a class="brand" href="../index.html">Days of warning</a>
+<a href="../nexperia/index.html">Nexperia 2025</a><a href="../rare-earths/index.html">Rare earths 2025</a>
+<a href="{REPO}">Code &amp; data</a></nav></header>
+<main>
+<section class="hero"><p class="eyebrow">Case study</p>
 <h1>{esc(cfg['title'])}</h1>
 <p class="lede">{esc(cfg['question'])}</p>
+<div class="stats">
+<div class="stat accent"><div class="v">{res['map_value']}<small>days</small></div><div class="l">Map value: extra warning from a full supplier map</div></div>
+<div class="stat"><div class="v">{res['observers'][2]['lead_days']}<small>days</small></div><div class="l">Earliest actionable warning with the full map</div></div>
+<div class="stat"><div class="v">{res['t_stop']}</div><div class="l">First production stop</div></div>
+<div class="stat"><div class="v">{res['needed'][0]}&ndash;{res['needed'][-1]}<small>days</small></div><div class="l">Lead time needed to act</div></div>
+</div>
+<p class="note">{esc(NOTE)}</p></section>
 <h2>Result</h2>
 <div class="headline"><ul>{hl}</ul></div>
 <figure>{svg['timeline']}<figcaption>Public signals by channel. The dashed lines mark the latest start of action for the shortest and longest need.</figcaption></figure>
@@ -159,6 +205,7 @@ def page(res: dict, method_md: str) -> str:
 <h2>Limits</h2>{md_to_html(section(narrative, 'Limits'))}
 <h2>Data and code</h2>
 <p>Code, inputs and all generated tables: <a href="{REPO}">{REPO}</a>. Every number on this page is generated by the scripts. Licence: MIT.</p>
+<footer>Every number on this site is generated by the scripts from checked public sources. Licence: MIT. <a href="{REPO}">Source code and data</a>.</footer>
 </main></body></html>
 """
 
@@ -182,23 +229,33 @@ def md_table_to_html(md: str) -> str:
 
 
 def overview(results: list[dict], cmp_md: str = "", works_md: str = "") -> str:
+    stat_tiles = "".join(
+        f'<div class="stat accent"><div class="v">{r["map_value"]}<small>days</small></div>'
+        f'<div class="l">Map value: {esc(r["config"]["short"])}</div></div>' for r in results)
+    stat_tiles += (f'<div class="stat"><div class="v">{len(results)}</div><div class="l">Real disruptions replayed</div></div>'
+                   '<div class="stat"><div class="v">0</div><div class="l">Wikipedia or private data used as evidence</div></div>')
     cards = []
     for res in results:
         cfg = res["config"]
-        cards.append(f'<div class="card"><h3><a href="{res["case"]}/index.html">{esc(cfg["title"])}</a></h3>'
-                     f'<p>{esc(cfg["question"])}</p><p>First stop: {esc(res["t_stop"])}. '
-                     f'<strong>Map value: {res["map_value"]} days.</strong> Generic variant: '
-                     f'{res["map_value_generic"]} days.</p></div>')
+        cards.append(f'<div class="card"><span class="tag">{esc(cfg.get("node_kind", ""))}</span>'
+                     f'<h3>{esc(cfg["title"])}</h3><div class="big">{res["map_value"]} days</div>'
+                     f'<p>{esc(cfg["question"])}</p><p class="tag">First stop {esc(res["t_stop"])}</p>'
+                     f'<a class="more" href="{res["case"]}/index.html">Open the case &rarr;</a></div>')
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Days of warning</title>
 <meta name="description" content="How many days of warning is a hidden-tier supply chain map worth? Independent public-data backtests of real disruptions.">
 <style>{CSS}</style></head>
-<body><main>
-<p class="note">{esc(NOTE)}</p>
-<h1>Days of warning</h1>
-<p class="lede">How many days of warning is a hidden-tier supply chain map worth? Each case compares an observer who knows only the public map with an observer who knows the full map.</p>
+<body><header class="topbar"><nav><a class="brand" href="index.html">Days of warning</a>
+<a href="nexperia/index.html">Nexperia 2025</a><a href="rare-earths/index.html">Rare earths 2025</a>
+<a href="{REPO}">Code &amp; data</a></nav></header>
+<main>
+<section class="hero"><p class="eyebrow">Independent research prototype</p>
+<h1>How many days of warning is a hidden supplier map worth?</h1>
+<p class="lede">Two real 2025 disruptions, replayed day by day with public data only. One observer sees only what the public map named; the other knows the full supply chain. The difference is the map value.</p>
+<div class="stats">{stat_tiles}</div>
+<p class="note">{esc(NOTE)}</p></section>
 <h2>Cases</h2>
 <div class="cards">{''.join(cards)}</div>
 <h2>What works and what does not</h2>
@@ -207,6 +264,7 @@ def overview(results: list[dict], cmp_md: str = "", works_md: str = "") -> str:
 {md_table_to_html(cmp_md)}
 <h2>Data and code</h2>
 <p><a href="{REPO}">{REPO}</a>. Every number on this site is generated by the scripts. Licence: MIT.</p>
+<footer>Every number on this site is generated by the scripts from checked public sources. Licence: MIT. <a href="{REPO}">Source code and data</a>.</footer>
 </main></body></html>
 """
 

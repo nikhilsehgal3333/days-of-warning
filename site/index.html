@@ -3,29 +3,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Days of warning</title>
 <meta name="description" content="How many days of warning is a hidden-tier supply chain map worth? Independent public-data backtests of real disruptions.">
-<style>:root { --ink:#1f2328; --muted:#57606a; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa; --accent:#0b5cad; }
+<style>:root { --ink:#16181d; --muted:#5b6170; --line:#e3e6eb; --bg:#fbfbfa; --card:#ffffff; --soft:#f2f4f7;
+  --accent:#0b5cad; --accent-soft:#e8f0fb; --red:#b42318; --red-soft:#fdecea; --green:#1a7f37; }
+@media (prefers-color-scheme: dark) { :root { --ink:#e8eaee; --muted:#a2a9b6; --line:#2b313b; --bg:#0f1216;
+  --card:#161a20; --soft:#1c2129; --accent:#6ea8ff; --accent-soft:#16253b; --red:#ff8a80; --red-soft:#3a1d1b; --green:#56d364; }
+  figure svg { filter: invert(0.92) hue-rotate(180deg); } }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 Arial, Helvetica, sans-serif; }
-main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
-h1 { font-size:1.9rem; line-height:1.2; margin:0.2em 0 0.3em; }
-h2 { font-size:1.3rem; margin:2em 0 0.5em; border-bottom:1px solid var(--line); padding-bottom:4px; }
-.lede { font-size:1.15rem; }
-.note { background:var(--soft); border-left:4px solid var(--accent); padding:10px 14px; color:var(--muted); }
-.headline { background:var(--soft); border:1px solid var(--line); border-radius:8px; padding:8px 20px; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
-.card { border:1px solid var(--line); border-radius:8px; padding:12px 16px; }
-figure { margin:1.2em 0; } figure svg { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
-figcaption { color:var(--muted); font-size:0.9rem; }
-.scroll { overflow-x:auto; } table { border-collapse:collapse; width:100%; font-size:0.92rem; }
-th, td { border-bottom:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top; }
-th { background:var(--soft); } a { color:var(--accent); }
-code { background:var(--soft); padding:1px 4px; border-radius:4px; }</style></head>
-<body><main>
-<p class="note">Independent study by Nikhil Sehgal, using public data only. Not a product of Daimler Truck, the University of St.Gallen, BMW Group, Ulm University or Catena-X. Proof of concept. Illustrative backtests of single cases, not forecasts.</p>
-<h1>Days of warning</h1>
-<p class="lede">How many days of warning is a hidden-tier supply chain map worth? Each case compares an observer who knows only the public map with an observer who knows the full map.</p>
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font:17px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.topbar { position:sticky; top:0; z-index:5; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.topbar nav { max-width:1040px; margin:0 auto; padding:10px 20px; display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+.topbar .brand { font-weight:700; color:var(--ink); text-decoration:none; margin-right:auto; letter-spacing:-0.01em; }
+.topbar a { color:var(--muted); text-decoration:none; font-size:0.92rem; }
+.topbar a:hover { color:var(--accent); }
+main { max-width:1040px; margin:0 auto; padding:28px 20px 80px; }
+.hero { padding:36px 0 18px; }
+.eyebrow { text-transform:uppercase; letter-spacing:0.08em; font-size:0.78rem; font-weight:600; color:var(--accent); margin:0 0 10px; }
+h1 { font-size:clamp(2rem, 5vw, 3.1rem); line-height:1.08; letter-spacing:-0.025em; margin:0 0 14px; }
+h2 { font-size:1.45rem; letter-spacing:-0.015em; margin:2.6em 0 0.7em; }
+h3 { font-size:1.1rem; margin:0 0 6px; }
+.lede { font-size:1.22rem; color:var(--muted); max-width:46em; margin:0; }
+.note { font-size:0.85rem; color:var(--muted); background:var(--soft); border-radius:10px; padding:10px 14px; margin:22px 0 0; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin:26px 0 8px; }
+.stat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+.stat .v { font-size:2.2rem; font-weight:700; letter-spacing:-0.03em; line-height:1.1; }
+.stat .v small { font-size:1rem; font-weight:500; color:var(--muted); margin-left:4px; }
+.stat .l { color:var(--muted); font-size:0.9rem; margin-top:4px; }
+.stat.accent { background:var(--accent-soft); border-color:transparent; }
+.stat.accent .v { color:var(--accent); }
+.headline { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+  border-radius:12px; padding:6px 22px; }
+.headline li { margin:8px 0; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; display:flex;
+  flex-direction:column; gap:8px; transition:transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,0.07); }
+.card .big { font-size:2.6rem; font-weight:700; color:var(--accent); letter-spacing:-0.03em; line-height:1; }
+.card .tag { display:inline-block; font-size:0.78rem; color:var(--muted); background:var(--soft); padding:3px 9px; border-radius:99px; }
+.card a.more { margin-top:auto; font-weight:600; text-decoration:none; }
+figure { margin:1.4em 0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px; }
+figure svg { width:100%; height:auto; display:block; }
+figcaption { color:var(--muted); font-size:0.88rem; padding:8px 4px 2px; }
+.scroll { overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+table { border-collapse:collapse; width:100%; font-size:0.92rem; }
+th, td { border-bottom:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+th { background:var(--soft); font-weight:600; font-size:0.85rem; color:var(--muted); }
+tbody tr:hover { background:var(--soft); }
+a { color:var(--accent); }
+ul, ol { padding-left:1.25em; }
+code { background:var(--soft); padding:1px 6px; border-radius:6px; font-size:0.9em; }
+footer { border-top:1px solid var(--line); margin-top:60px; padding-top:20px; color:var(--muted); font-size:0.88rem; }</style></head>
+<body><header class="topbar"><nav><a class="brand" href="index.html">Days of warning</a>
+<a href="nexperia/index.html">Nexperia 2025</a><a href="rare-earths/index.html">Rare earths 2025</a>
+<a href="https://github.com/nikhilsehgal3333/days-of-warning">Code &amp; data</a></nav></header>
+<main>
+<section class="hero"><p class="eyebrow">Independent research prototype</p>
+<h1>How many days of warning is a hidden supplier map worth?</h1>
+<p class="lede">Two real 2025 disruptions, replayed day by day with public data only. One observer sees only what the public map named; the other knows the full supply chain. The difference is the map value.</p>
+<div class="stats"><div class="stat accent"><div class="v">330<small>days</small></div><div class="l">Map value: Nexperia chips, 2025</div></div><div class="stat accent"><div class="v">333<small>days</small></div><div class="l">Map value: Rare-earth magnets, 2025</div></div><div class="stat"><div class="v">2</div><div class="l">Real disruptions replayed</div></div><div class="stat"><div class="v">0</div><div class="l">Wikipedia or private data used as evidence</div></div></div>
+<p class="note">Independent study by Nikhil Sehgal, using public data only. Not a product of Daimler Truck, the University of St.Gallen, BMW Group, Ulm University or Catena-X. Proof of concept. Illustrative backtests of single cases, not forecasts.</p></section>
 <h2>Cases</h2>
-<div class="cards"><div class="card"><h3><a href="nexperia/index.html">The 2025 Nexperia chip disruption</a></h3><p>How many days of warning was a hidden-tier map worth in the 2025 Nexperia disruption?</p><p>First stop: 2025-10-28. <strong>Map value: 330 days.</strong> Generic variant: 0 days.</p></div><div class="card"><h3><a href="rare-earths/index.html">China's 2025 rare-earth magnet export controls</a></h3><p>How many days of warning was a hidden-tier map worth before the 2025 rare-earth magnet stoppages?</p><p>First stop: 2025-05-30. <strong>Map value: 333 days.</strong> Generic variant: 0 days.</p></div></div>
+<div class="cards"><div class="card"><span class="tag">one firm and its owner</span><h3>The 2025 Nexperia chip disruption</h3><div class="big">330 days</div><p>How many days of warning was a hidden-tier map worth in the 2025 Nexperia disruption?</p><p class="tag">First stop 2025-10-28</p><a class="more" href="nexperia/index.html">Open the case &rarr;</a></div><div class="card"><span class="tag">a country-level supply of a material</span><h3>China's 2025 rare-earth magnet export controls</h3><div class="big">333 days</div><p>How many days of warning was a hidden-tier map worth before the 2025 rare-earth magnet stoppages?</p><p class="tag">First stop 2025-05-30</p><a class="more" href="rare-earths/index.html">Open the case &rarr;</a></div></div>
 <h2>What works and what does not</h2>
 <ul><li><strong>Works: the map value.</strong> It was 330 days for one hidden firm and 333 days for a country-level material supply, and it stayed the same across the 12-, 24- and 36-month windows. In both cases the early signal was a state measure.</li><li><strong>Does not work: generic public knowledge.</strong> The generic variant gives a map value of 0 and 0 days: the industry-level dependency was public, but the named public map first reached the hidden node only on 2025-10-17 and 2025-06-05, after the first stop.</li><li><strong>Mixed: the trigger.</strong> It left 11 days in the Nexperia case (actionable share 0.0) and 56 days in the rare-earth case (share 0.333).</li><li><strong>Does not work: acting on every warning.</strong> Only 1 of 7 Chinese export controls on materials from 2023 to 2025 was followed by a vehicle production stop (2 of 7 with a borderline case).</li><li><strong>Pre-registered predictions of case 2:</strong> P1 yes, P2 yes, P3 yes, P4 partly.</li></ul>
 <h2>Comparison</h2>
@@ -36,4 +77,5 @@ code { background:var(--soft); padding:1px 4px; border-radius:4px; }</style></he
 <div class="scroll"><table><thead><tr><th></th><th>Criterion</th><th>Result</th></tr></thead><tbody><tr><td>Q1</td><td>Map value stable within 180 days across the 12-, 24- and 36-month windows</td><td>works</td></tr><tr><td>Q2</td><td>Class precision of 2 in 7 or lower</td><td>this kind of warning alone does not justify action</td></tr><tr><td>Q3</td><td>The trigger left time to act (actionable share above 0)</td><td>works</td></tr></tbody></table></div>
 <h2>Data and code</h2>
 <p><a href="https://github.com/nikhilsehgal3333/days-of-warning">https://github.com/nikhilsehgal3333/days-of-warning</a>. Every number on this site is generated by the scripts. Licence: MIT.</p>
+<footer>Every number on this site is generated by the scripts from checked public sources. Licence: MIT. <a href="https://github.com/nikhilsehgal3333/days-of-warning">Source code and data</a>.</footer>
 </main></body></html>
