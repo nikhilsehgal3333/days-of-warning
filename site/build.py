@@ -232,8 +232,7 @@ def overview(results: list[dict], cmp_md: str = "", works_md: str = "") -> str:
     stat_tiles = "".join(
         f'<div class="stat accent"><div class="v">{r["map_value"]}<small>days</small></div>'
         f'<div class="l">Map value: {esc(r["config"]["short"])}</div></div>' for r in results)
-    stat_tiles += (f'<div class="stat"><div class="v">{len(results)}</div><div class="l">Real disruptions replayed</div></div>'
-                   '<div class="stat"><div class="v">0</div><div class="l">Wikipedia or private data used as evidence</div></div>')
+    stat_tiles += (f'<div class="stat"><div class="v">{len(results)}</div><div class="l">Real disruptions replayed</div></div>')
     cards = []
     for res in results:
         cfg = res["config"]
