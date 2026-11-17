@@ -16,7 +16,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def cases() -> list[str]:
-    return sorted(p.name for p in (ROOT / "case").iterdir() if (p / "config.json").exists())
+    """A case counts once it has a config and an evidence file."""
+    return sorted(p.name for p in (ROOT / "case").iterdir()
+                  if (p / "config.json").exists() and (p / "evidence.csv").exists())
 
 
 def case_dir(case: str) -> Path:

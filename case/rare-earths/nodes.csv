@@ -1,0 +1,5 @@
+node_id,label,name,kind,tier,country,note
+VM,Vehicle makers,Vehicle makers (group),group,0,multiple,
+T1,Tier-1 motor suppliers,"Tier-1 suppliers of motors, actuators and e-drives (group)",group,1,multiple,
+MAG,Magnet makers,Makers of rare-earth permanent magnets (group),group,2,multiple,
+CNRE,China rare-earth supply,Rare-earth separation and magnet supply in China,group,3,CN,country-level supply

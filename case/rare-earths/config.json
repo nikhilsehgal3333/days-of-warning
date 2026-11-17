@@ -1,0 +1,53 @@
+{
+  "id": "rare-earths",
+  "title": "China's 2025 rare-earth magnet export controls",
+  "short": "Rare-earth magnets, 2025",
+  "question": "How many days of warning was a hidden-tier map worth before the 2025 rare-earth magnet stoppages?",
+  "node_kind": "a country-level supply of a material",
+  "observer": "VM",
+  "lookback_days": 730,
+  "sensitivity_lookback_days": [
+    365,
+    730,
+    1095
+  ],
+  "map_reference": {
+    "date": "2025-04-04",
+    "label": "China's control of 4 Apr 2025"
+  },
+  "figure": {
+    "full": [
+      "2023-06-01",
+      "2025-11-30"
+    ],
+    "zoom": [
+      "2025-03-25",
+      "2025-06-30"
+    ],
+    "channels": [
+      "regulatory",
+      "trade",
+      "association",
+      "operational",
+      "attention"
+    ]
+  },
+  "signals": {
+    "pageviews": [
+      {
+        "source_id": "wiki_pv_rare_earth_element",
+        "article": "Rare-earth element",
+        "subject": "CNRE",
+        "start": "20230101",
+        "end": "20251231"
+      },
+      {
+        "source_id": "wiki_pv_dysprosium",
+        "article": "Dysprosium",
+        "subject": "CNRE",
+        "start": "20230101",
+        "end": "20251231"
+      }
+    ]
+  }
+}
