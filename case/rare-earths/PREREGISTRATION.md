@@ -109,4 +109,23 @@ sit in electric motors, actuators and e-drives.
 
 ## Change log
 
-- *(empty at registration)*
+Entries made while collecting evidence, before any analysis run of this case:
+
+- **17 Nov 2026, application of R2.** The Rare Earth Management Regulations (published 29 June 2024,
+  in force 1 October 2024) count as a signal. Reason: a checked tier-2 source says that enterprises
+  in "the export of rare earth products" must keep product flow records in a state traceability
+  system, which gives the state control over that export. The technology export ban of 21 December
+  2023 does not count, because it restricts technology, not the export of rare earths, alloys or
+  magnets.
+- **17 Nov 2026, application of R5.** A Ford Authority report of 30 May 2025 says that Ford's Chicago
+  Assembly plant "was temporarily paused last week" after a supplier ran out of magnets. It is
+  earlier than the CLEPA statement of 4 June 2025, so it is the first stop, as R5 provides.
+- **17 Nov 2026, clarification of R4.** A link is "named" when the source names a specific firm, or
+  the suppliers of a specific firm, on that link. Statements about China, an industry or a product
+  type are "generic".
+- **17 Nov 2026, R7 search result.** The antimony search found a borderline case: a materials
+  supplier (Henkel) declared force majeure and suspended deliveries to automakers. It is not a
+  stated production stop, so the outcome stays "no stop found". The class precision is also
+  reported with this case counted, as a variant.
+- **17 Nov 2026, thresholds for P2 and P4.** "Many months" in P2 is read as 90 days or more. "Within
+  days" in P4 is read as 7 days or fewer. These readings were written before the analysis run.

@@ -118,6 +118,8 @@ def lead_table(events: list[dict], t_stop: str, lookback: int, cells: list[tuple
     for e in events:
         if e["public_date"] >= t_stop or e["public_date"] < earliest:
             continue
+        if e["relation"] == "response":
+            continue  # a firm's own action is reported, but it is not a signal
         lead = (d(t_stop) - d(e["public_date"])).days
         share = sum(lead >= ttr - tts for tts, ttr in cells) / len(cells)
         rows.append({

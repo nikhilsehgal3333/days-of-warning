@@ -1,0 +1,8 @@
+measure_id,material,announced,effective,outcome,borderline,date_check,outcome_check,reason,searches_logged
+M1,gallium and germanium,2023-07-03,2023-08-01,no stop found,False,True,True,,4
+M2,graphite,2023-10-20,2023-12-01,no stop found,False,True,True,,4
+M3,antimony,2024-08-15,2024-09-15,no stop found,True,True,True,,4
+M4,"gallium, germanium, antimony and superhard materials to the United States",2024-12-03,2024-12-03,no stop found,False,True,True,,4
+M5,"tungsten, tellurium, bismuth, molybdenum and indium",2025-02-04,2025-02-04,no stop found,False,True,True,,4
+M6,seven medium and heavy rare earths and their magnets,2025-04-04,2025-04-04,stop found,False,True,True,,0
+M7,extension of the rare-earth controls,2025-10-09,2025-10-09,no stop found,False,True,True,,4

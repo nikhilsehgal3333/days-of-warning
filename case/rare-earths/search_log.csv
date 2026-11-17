@@ -1,0 +1,25 @@
+date,measure_id,query,searched,finding,decision
+2026-11-17,M1,gallium germanium export controls production halt automaker,web search,"warnings and forecasts (Volkswagen ready to act; 'limited impact' on the auto industry); no reported production stop",no stop found
+2026-11-17,M1,gallium germanium shortage automotive plant stop,web search,no report of a plant stop caused by gallium or germanium; stops in the results have other causes (2021 chip shortage; Nexperia 2025; rare earths 2025),no stop found
+2026-11-17,M1,gallium germanium export controls vehicle production,web search,"impact on chips and future GaN use discussed; NXP reported no material impact; no production stop",no stop found
+2026-11-17,M1,gallium germanium export production stop,"ACEA, CLEPA and VDA press archives",ACEA notes the restrictions (August 2023) and price risk; stops reported only for the 2025 rare-earth controls,no stop found
+2026-11-17,M2,graphite export controls production halt automaker,web search,forecasts of possible delays; automakers secured other sources; no reported production stop,no stop found
+2026-11-17,M2,graphite shortage automotive plant stop,web search,"no report of a plant stop caused by graphite; one plant change in the results (GM, October 2023) is attributed to lower EV demand",no stop found
+2026-11-17,M2,graphite export controls vehicle production,web search,analysts disagree on the effect on EV production; no production stop,no stop found
+2026-11-17,M2,graphite export restrictions production,"ACEA, CLEPA and VDA press archives",graphite refining dependence described; no production stop reported,no stop found
+2026-11-17,M3,antimony export controls production halt automaker,web search,"Henkel declared force majeure and suspended deliveries of four adhesives and lubricants used by automakers (letter of 8 November 2024, Reuters); no vehicle maker or tier-1 production stop reported",no stop found (borderline case recorded)
+2026-11-17,M3,antimony shortage automotive plant stop,web search,same Henkel delivery suspension; battery makers report cost and supply strain; no plant stop,no stop found (borderline case recorded)
+2026-11-17,M3,antimony export controls vehicle production,web search,lead-acid battery link described; no production stop,no stop found
+2026-11-17,M3,antimony export restrictions supply,"ACEA, CLEPA and VDA press archives",no antimony production stop reported,no stop found
+2026-11-17,M4,gallium germanium antimony export ban United States production halt automaker,web search,"warnings (Stellantis sourcing comment; risk to production lines); no confirmed production stop",no stop found
+2026-11-17,M4,gallium germanium antimony ban United States shortage automotive plant stop,web search,the only automotive stop in the results is Ford in May 2025 (rare earths),no stop found
+2026-11-17,M4,gallium germanium antimony export ban United States vehicle production,web search,dependence figures and cost estimates; no production stop,no stop found
+2026-11-17,M4,critical raw materials China export ban United States December 2024 automotive,"ACEA, CLEPA and VDA press archives",no production stop reported for this measure,no stop found
+2026-11-17,M5,tungsten tellurium bismuth molybdenum indium export controls production halt automaker,web search,no report of a production stop caused by these five metals; automaker warnings in the results concern rare earths,no stop found
+2026-11-17,M5,tungsten molybdenum indium shortage automotive plant stop 2025,web search,results concern rare earths only,no stop found
+2026-11-17,M5,tungsten tellurium bismuth molybdenum indium export controls vehicle production,web search,uses in tools and steel described; no production stop,no stop found
+2026-11-17,M5,tungsten molybdenum indium export controls China 2025,"ACEA, CLEPA and VDA press archives",no production stop reported for these metals,no stop found
+2026-11-17,M7,rare earth October 2025 export controls production halt automaker,web search,"warnings and stockpiling before the planned start on 8 November; one claim of halts in a less established outlet (not tier 1 or 2); the Ford stop in the results belongs to the April controls",no stop found
+2026-11-17,M7,rare earth shortage automotive plant stop November December 2025 January February 2026,web search,no confirmed plant stop in November 2025 to February 2026,no stop found
+2026-11-17,M7,rare earth export controls October 9 2025 vehicle production impact suspended,web search,"suspension from 7 November 2025; the April controls stayed in force; Bosch expected the industry to 'overstock rare earths'",no stop found
+2026-11-17,M7,rare earth export controls October 2025 production,"ACEA, CLEPA and VDA press archives",CLEPA (October 2025) warns of a continued risk of production stops; no new stop reported,no stop found

@@ -49,6 +49,29 @@ def run(case: str) -> list[dict]:
     return out
 
 
+def check_assumptions(case: str) -> list[dict]:
+    """Check the source quotes behind the time-to-act grid (columns basis_* and basis2_*)."""
+    cdir, tdir = paths.case_dir(case), paths.text_dir(case)
+    tiers = {r["source_id"]: r.get("tier", "")
+             for r in csv.DictReader(open(cdir / "sources.csv", encoding="utf-8"))}
+    out = []
+    for row in csv.DictReader(open(cdir / "assumptions.csv", encoding="utf-8")):
+        for prefix in ("basis", "basis2"):
+            sid, quote = row.get(f"{prefix}_source_id") or "", row.get(f"{prefix}_quote") or ""
+            if not sid:
+                continue
+            path = tdir / f"{sid}.txt"
+            text = path.read_text(encoding="utf-8") if path.exists() else ""
+            found, reason = evaluate(quote, text, tiers.get(sid, ""))
+            out.append({"name": row["name"], "source_id": sid, "quote_found": found, "reason": reason})
+    if out:
+        with open(paths.results_dir(case) / "assumption_check.csv", "w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(out[0]))
+            writer.writeheader()
+            writer.writerows(out)
+    return out
+
+
 def main() -> None:
     chosen, _ = paths.selected()
     for case in chosen:
