@@ -13,7 +13,7 @@ from datetime import date, timedelta
 
 from . import paths
 
-INK, MUTED, GRID, ACCENT, STOP = "#1f2328", "#57606a", "#d0d7de", "#0b5cad", "#b42318"
+INK, MUTED, GRID, ACCENT, STOP = "#1f2328", "#57606a", "#d0d7de", "#0f766e", "#b42318"
 
 
 def esc(text: str) -> str:

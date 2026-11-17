@@ -9,12 +9,12 @@
 <line x1="830" y1="60" x2="717" y2="150" stroke="#b42318" stroke-width="2.5"/>
 <text x="758" y="16" fill="#b42318" text-anchor="middle" font-size="12">named</text>
 <text x="758" y="30" fill="#b42318" text-anchor="middle" font-size="12">2025-10-17</text>
-<line x1="283" y1="150" x2="170" y2="150" stroke="#0b5cad" stroke-width="2.5"/>
-<text x="227" y="128" fill="#0b5cad" text-anchor="middle" font-size="12">named</text>
-<text x="227" y="142" fill="#0b5cad" text-anchor="middle" font-size="12">2020-09-18</text>
-<line x1="830" y1="240" x2="717" y2="150" stroke="#0b5cad" stroke-width="2.5"/>
-<text x="758" y="270" fill="#0b5cad" text-anchor="middle" font-size="12">named</text>
-<text x="758" y="284" fill="#0b5cad" text-anchor="middle" font-size="12">2018-10-25</text>
+<line x1="283" y1="150" x2="170" y2="150" stroke="#0f766e" stroke-width="2.5"/>
+<text x="227" y="128" fill="#0f766e" text-anchor="middle" font-size="12">named</text>
+<text x="227" y="142" fill="#0f766e" text-anchor="middle" font-size="12">2020-09-18</text>
+<line x1="830" y1="240" x2="717" y2="150" stroke="#0f766e" stroke-width="2.5"/>
+<text x="758" y="270" fill="#0f766e" text-anchor="middle" font-size="12">named</text>
+<text x="758" y="284" fill="#0f766e" text-anchor="middle" font-size="12">2018-10-25</text>
 <rect x="10" y="127" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
 <text x="90" y="155" fill="#1f2328" text-anchor="middle">Vehicle makers</text>
 <rect x="283" y="127" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>

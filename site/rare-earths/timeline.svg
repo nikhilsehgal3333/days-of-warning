@@ -41,11 +41,11 @@
 <text x="890.2" y="50" fill="#57606a" font-size="12">Sep 25</text>
 <line x1="914.8" y1="55" x2="914.8" y2="370" stroke="#d0d7de"/>
 <line x1="943.3" y1="55" x2="943.3" y2="370" stroke="#d0d7de"/>
-<line x1="798.0" y1="60" x2="798.0" y2="370" stroke="#0b5cad" stroke-dasharray="5 4"/>
-<text x="794.0" y="70" fill="#0b5cad" font-size="12" text-anchor="end">act by: 3 days before</text>
-<line x1="648.0" y1="60" x2="648.0" y2="370" stroke="#0b5cad" stroke-dasharray="5 4"/>
-<text x="644.0" y="70" fill="#0b5cad" font-size="12" text-anchor="end">act by: 166 days before</text>
-<rect x="740.0" y="55" width="89.2" height="315" fill="#0b5cad" fill-opacity="0.06"/>
+<line x1="798.0" y1="60" x2="798.0" y2="370" stroke="#0f766e" stroke-dasharray="5 4"/>
+<text x="794.0" y="70" fill="#0f766e" font-size="12" text-anchor="end">act by: 3 days before</text>
+<line x1="648.0" y1="60" x2="648.0" y2="370" stroke="#0f766e" stroke-dasharray="5 4"/>
+<text x="644.0" y="70" fill="#0f766e" font-size="12" text-anchor="end">act by: 166 days before</text>
+<rect x="740.0" y="55" width="89.2" height="315" fill="#0f766e" fill-opacity="0.06"/>
 <line x1="800.7" y1="60" x2="800.7" y2="370" stroke="#b42318" stroke-width="2"/>
 <text x="805.7" y="302" fill="#b42318" font-size="12">first stop</text>
 <text x="805.7" y="317" fill="#b42318" font-size="12">2025-05-30</text>
