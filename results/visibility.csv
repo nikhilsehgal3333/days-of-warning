@@ -1,6 +1,6 @@
 link_id,level,subject,relation,object,visible_from,n_evidence,first_source_id
-L01,named,WT,owns,NEX,2024-10-23,2,wiki_nexperia_rev1252992817
+L01,named,WT,owns,NEX,2018-10-25,2,reuters_2018-10-25
 L02,named,NEXCN,assembles_for,NEX,2025-10-17,1,ams_2025-10-17
-L03,generic,NEX,supplies,T1,2024-10-23,1,wiki_nexperia_rev1252992817
+L03,generic,NEX,supplies,T1,2024-01-03,1,nexperia_about_2024
 L03,named,NEX,supplies,T1,2025-10-17,1,ams_2025-10-17
-L04,named,T1,supplies,VM,2024-11-23,2,wiki_bosch_rev1259075204
+L04,named,T1,supplies,VM,2020-09-18,1,denso_profile_2020

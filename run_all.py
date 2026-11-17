@@ -24,6 +24,14 @@ def main() -> None:
     failed = [r["evidence_id"] for r in checked if not r["quote_found"]]
     res = analysis.run()
     figures.run(res)
+    baseline = ROOT / "tests" / "fixtures" / "nexperia_v0.1"
+    same = all(
+        list(csv.DictReader(open(ROOT / "results" / name, encoding="utf-8", newline="")))
+        == list(csv.DictReader(open(baseline / name, encoding="utf-8", newline="")))
+        for name in ("map_value.csv", "lead_times.csv"))
+    tiers = {r["source_id"]: r["tier"] for r in csv.DictReader(open(ROOT / "case" / "sources.csv", encoding="utf-8"))}
+    used = {r["source_id"] for r in csv.DictReader(open(ROOT / "case" / "evidence.csv", encoding="utf-8"))}
+    tier_count = {t: sum(1 for s in used if tiers.get(s) == t) for t in ("1", "2", "3")}
     gold = list(csv.DictReader(open(ROOT / "results" / "gold_check.csv", encoding="utf-8")))
     n_correct = sum(r["mark"] == "correct" for r in gold)
     sources = list(csv.DictReader(open(ROOT / "case" / "sources.csv", encoding="utf-8")))
@@ -35,7 +43,13 @@ def main() -> None:
         "",
         f"Evidence: {len(checked) - len(failed)} of {len(checked)} rows pass the word-for-word quote check"
         + (f" (failed: {', '.join(failed)})." if failed else ".")
-        + f" Human check of a sample: {n_correct} of {len(gold)} rows marked correct.",
+        + f" Human check of a sample: {n_correct} of {len(gold)} rows marked correct"
+        + (f", {sum(r['mark'] == 'pending' for r in gold)} rows waiting for the check." if any(r['mark'] == 'pending' for r in gold) else "."),
+        "",
+        f"Source rule: the evidence uses {tier_count['1']} primary or official sources and {tier_count['2']} "
+        f"established secondary sources. {tier_count['3']} sources are of a kind that is not accepted as evidence "
+        "(such as Wikipedia). Against version 0.1, before the source rule, the map value and the lead times are "
+        + ("unchanged." if same else "CHANGED, see the tables below."),
         "",
         analysis.markdown(res),
         "",

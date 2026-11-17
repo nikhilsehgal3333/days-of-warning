@@ -1,0 +1,5 @@
+observer,first_event,public_date,lead_days,first_connected_any,first_connected_any_lead
+"A (public map, named links)",,,0,E07,12
+"A, variant with generic links",E01,2024-12-02,330,E01,330
+B (full map),E01,2024-12-02,330,E01,330
+"map value (B minus A), days",,,330,,

@@ -56,7 +56,11 @@ Full tables: [`results/RESULTS.md`](results/RESULTS.md). Figures: `site/`.
 
 - **Point-in-time evidence.** Every link and every event has a source with a date, and a quote of 30
   words or fewer that a program finds word for word in the downloaded text (`htw/checks.py`). Most
-  sources are pinned to an exact copy in the Wayback Machine or to a fixed Wikipedia revision.
+  sources are pinned to an exact copy in the Wayback Machine.
+- **Source rule.** Evidence comes from primary or official sources (regulators, courts, company
+  documents, official statistics) or, where none exists, from established secondary sources (wire
+  services, trade press, industry associations). Wikipedia, blogs and aggregators are never evidence;
+  the check rejects them. Wikipedia page views are used only as a measure of public attention.
 - **Public date.** A signal counts from the first day an outsider could know it. The Dutch state
   order took effect on 30 September 2025 but became public on 12 October 2025.
 - **Time to act.** The European vehicle makers' association said that stocks would last "only a few
@@ -72,7 +76,8 @@ Full tables: [`results/RESULTS.md`](results/RESULTS.md). Figures: `site/`.
   spike days in a row. This rule was added after seeing the data, because two single spike days in
   2024 were not followed by any event.
 - **Human check.** Nikhil Sehgal checked all map links and a random sample of 10 events against the
-  sources before the analysis.
+  sources before the analysis. Three map links were replaced later under the source rule and wait for
+  the same check.
 
 ## Reading of the author
 
