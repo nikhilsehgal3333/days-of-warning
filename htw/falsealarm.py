@@ -14,6 +14,15 @@ from . import paths
 from .checks import evaluate
 
 
+def count(rows: list[dict]) -> dict:
+    """Stops, borderline cases and precision of a signal class."""
+    stops = sum(1 for r in rows if r["outcome"] == "stop found")
+    borderline = sum(1 for r in rows if r["borderline"] and r["outcome"] != "stop found")
+    return {"n": len(rows), "stops": stops, "borderline": borderline,
+            "precision": round(stops / len(rows), 3),
+            "precision_with_borderline": round((stops + borderline) / len(rows), 3)}
+
+
 def available(case: str) -> bool:
     return (paths.case_dir(case) / "signal_class.csv").exists()
 
@@ -44,8 +53,8 @@ def run(case: str) -> dict | None:
                     "borderline": "borderline" in r["note"], "date_check": date_ok,
                     "outcome_check": out_ok, "reason": "; ".join(x for x in (date_reason, out_reason) if x),
                     "searches_logged": sum(1 for s in log if s["measure_id"] == r["measure_id"])})
-    stops = sum(1 for r in out if r["outcome"] == "stop found")
-    borderline = sum(1 for r in out if r["borderline"] and r["outcome"] != "stop found")
+    c = count(out)
+    stops, borderline = c["stops"], c["borderline"]
     with open(paths.results_dir(case) / "false_alarms.csv", "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(out[0]))
         writer.writeheader()

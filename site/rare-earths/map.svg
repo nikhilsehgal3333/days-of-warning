@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" role="img" font-family="Arial, sans-serif" font-size="13">
+<title>When each link of the map became public</title>
+<rect width="1000" height="250" fill="#ffffff"/>
+<line x1="830" y1="95" x2="717" y2="95" stroke="#b42318" stroke-width="2.5"/>
+<text x="773" y="73" fill="#b42318" text-anchor="middle" font-size="12">named</text>
+<text x="773" y="87" fill="#b42318" text-anchor="middle" font-size="12">2025-06-05</text>
+<text x="773" y="115" fill="#57606a" text-anchor="middle" font-size="12">generic</text>
+<text x="773" y="129" fill="#57606a" text-anchor="middle" font-size="12">2022-02-24</text>
+<line x1="557" y1="95" x2="443" y2="95" stroke="#b42318" stroke-width="2.5"/>
+<text x="500" y="73" fill="#b42318" text-anchor="middle" font-size="12">named</text>
+<text x="500" y="87" fill="#b42318" text-anchor="middle" font-size="12">2025-05-30</text>
+<text x="500" y="115" fill="#57606a" text-anchor="middle" font-size="12">generic</text>
+<text x="500" y="129" fill="#57606a" text-anchor="middle" font-size="12">2022-02-24</text>
+<line x1="283" y1="95" x2="170" y2="95" stroke="#0b5cad" stroke-width="2.5"/>
+<text x="227" y="73" fill="#0b5cad" text-anchor="middle" font-size="12">named</text>
+<text x="227" y="87" fill="#0b5cad" text-anchor="middle" font-size="12">2020-09-18</text>
+<rect x="10" y="72" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="90" y="100" fill="#1f2328" text-anchor="middle">Vehicle makers</text>
+<rect x="283" y="72" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="363" y="100" fill="#1f2328" text-anchor="middle">Tier-1 motor suppliers</text>
+<rect x="557" y="72" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="637" y="100" fill="#1f2328" text-anchor="middle">Magnet makers</text>
+<rect x="830" y="72" width="160" height="46" rx="6" fill="#f6f8fa" stroke="#1f2328"/>
+<text x="910" y="100" fill="#1f2328" text-anchor="middle">China rare-earth supply</text>
+<text x="30" y="230" fill="#57606a" font-size="12">Each line joins a supplier or owner (right) to its customer (left). Blue: named in public before China&#x27;s control of 4 Apr 2025. Red: named only later. Dashed grey: only a generic public statement.</text>
+</svg>

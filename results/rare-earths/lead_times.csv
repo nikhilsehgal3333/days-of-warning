@@ -1,0 +1,6 @@
+event_id,subject,relation,channel,public_date,lead_days,actionable_share,connected_A,connected_A_generic,connected_B
+E01,CNRE,rule,regulatory,2024-07-01,333,1.0,False,True,True
+E02,CNRE,control,trade,2025-04-04,56,0.333,False,True,True
+A02,CNRE,attention,attention,2025-04-06,54,0.333,False,True,True
+E03,CNRE,supply_drop,operational,2025-05-24,6,0.111,False,True,True
+E04,VM,warning,association,2025-05-28,2,0.0,True,True,True

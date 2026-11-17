@@ -1,0 +1,13 @@
+event_id,subject,relation,channel,event_date,public_date,source_id
+E01,CNRE,rule,regulatory,2024-10-01,2024-07-01,mw_2024_07_01_regs
+E02,CNRE,control,trade,2025-04-04,2025-04-04,mofcom_2025_18
+A02,CNRE,attention,attention,2025-04-06,2025-04-06,wiki_pv_dysprosium
+E03,CNRE,supply_drop,operational,2025-04-30,2025-05-24,smm_2025_april_magnets
+E04,VM,warning,association,2025-05-28,2025-05-28,autocarpro_2025_india
+E05,VM,production_stop,operational,2025-05-19,2025-05-30,fordauthority_2025_05
+E06,VM,warning,association,2025-05-09,2025-06-02,kitco_2025_06_02
+E07,VM,warning,association,2025-06-03,2025-06-03,yahoo_2025_vda
+E08,T1,production_stop,operational,2025-06-04,2025-06-04,clepa_2025_06_04
+E09,VM,production_stop,operational,2025-05-26,2025-06-05,amonline_suzuki
+E10,VM,response,operational,2025-06-17,2025-06-17,kitco_2025_06_17_daimler
+A01,CNRE,attention,attention,2025-10-10,2025-10-10,wiki_pv_rare_earth_element

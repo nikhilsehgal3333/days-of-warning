@@ -55,9 +55,11 @@ def timeline(res: dict, start: date, end: date, zoom: bool) -> str:
         fmt = "%d %b"
     else:
         ticks, fmt = month_starts(start, end), "%b %y"
-    for day in ticks:
+    step = 3 if len(ticks) > 15 else 1  # long windows: label every third month
+    for i, day in enumerate(ticks):
         out.append(f'<line x1="{x(day):.1f}" y1="{top + 15}" x2="{x(day):.1f}" y2="{chart_top + chart_h}" stroke="{GRID}"/>')
-        out.append(f'<text x="{x(day) + 3:.1f}" y="{top + 10}" fill="{MUTED}" font-size="12">{day.strftime(fmt)}</text>')
+        if i % step == 0:
+            out.append(f'<text x="{x(day) + 3:.1f}" y="{top + 10}" fill="{MUTED}" font-size="12">{day.strftime(fmt)}</text>')
     if not zoom:
         lo, hi = res["needed"][0], res["needed"][-1]
         for days in (lo, hi):

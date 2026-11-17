@@ -1,0 +1,6 @@
+link_id,level,subject,relation,object,visible_from,n_evidence,first_source_id
+L01,generic,CNRE,supplies,MAG,2022-02-24,2,doe_2022_magnets
+L01,named,CNRE,supplies,MAG,2025-06-05,1,yahoo_2025_factbox
+L02,generic,MAG,supplies,T1,2022-02-24,1,doe_2022_magnets
+L02,named,MAG,supplies,T1,2025-05-30,2,fordauthority_2025_05
+L03,named,T1,supplies,VM,2020-09-18,1,denso_profile_2020
